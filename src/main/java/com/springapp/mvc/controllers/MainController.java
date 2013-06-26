@@ -3,9 +3,12 @@ package com.springapp.mvc.controllers;
 import java.util.Comparator;
 import java.util.List;
 
+import com.springapp.mvc.dao.NoteDAO;
 import com.springapp.mvc.entities.NoteImpl;
 import com.springapp.mvc.services.NoteServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -45,8 +48,12 @@ public class MainController {
     }
 
     @RequestMapping(value = "/notes", method = RequestMethod.GET)
-    public String getNotes(Model model){
-        model.addAttribute("items", noteService.getNotes());
-        return "notes";
+    public ModelAndView getNotes(){
+        ApplicationContext context = new ClassPathXmlApplicationContext("Spring-Notes.xml");
+        NoteDAO noteDAO = (NoteDAO)context.getBean("NoteDAO");
+        //final List<NoteImpl> notes = noteService.getNotes();
+        ModelAndView mav = new ModelAndView("notes");
+        mav.addObject("items", noteDAO.getNotes());
+        return mav;
     }
 }
