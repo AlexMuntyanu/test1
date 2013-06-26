@@ -45,18 +45,8 @@ public class MainController {
     }
 
     @RequestMapping(value = "/notes", method = RequestMethod.GET)
-    public String getNotes(){
-        final List<NoteImpl> notes = noteService.getNotes();
-        ModelAndView mav = new ModelAndView("notes");
-        mav.addObject("items", notes);
-        System.out.println("Logging, in controller.getNotes()");
-        System.out.println("items :");
-        for (NoteImpl note : notes){
-            if (note==null){
-                System.out.println("item is null");
-            }
-            System.out.println("item : id="+ note.getId() + "; noteName=" + note.getNoteName()+"; text=" + note.getText());
-        }
+    public String getNotes(Model model){
+        model.addAttribute("items", noteService.getNotes());
         return "notes";
     }
 }

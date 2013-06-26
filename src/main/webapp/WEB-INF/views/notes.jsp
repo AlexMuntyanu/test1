@@ -6,9 +6,6 @@
 <head><title>Items</title></head>
 <body>
 <br>
-<h3>print</h3>
-<h1><c:out value="${items}"></c:out></h1>
-<br>
   <h3>Items:</h3>
   <c:forEach var="item" items="${items}">
 	<div>id = ${item.id}; name= ${item.noteName}, text= ${item.text} </div>
