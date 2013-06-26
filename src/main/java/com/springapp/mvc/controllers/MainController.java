@@ -1,21 +1,28 @@
 package com.springapp.mvc.controllers;
 
 import java.util.Comparator;
+import java.util.List;
 
+import com.springapp.mvc.entities.NoteImpl;
+import com.springapp.mvc.services.NoteServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  */
 @Controller
-public class FirstController {
+public class MainController {
 
     @Autowired
     Comparator<String> comparator;
+
+    @Autowired
+    NoteServiceImpl noteService;
 
     @RequestMapping(value = "/")
     public String first(){
@@ -35,5 +42,21 @@ public class FirstController {
 
         model.addAttribute("output", output);
         return "compareResult";
+    }
+
+    @RequestMapping(value = "/notes", method = RequestMethod.GET)
+    public String getNotes(){
+        final List<NoteImpl> notes = noteService.getNotes();
+        ModelAndView mav = new ModelAndView("notes");
+        mav.addObject("items", notes);
+        System.out.println("Logging, in controller.getNotes()");
+        System.out.println("items :");
+        for (NoteImpl note : notes){
+            if (note==null){
+                System.out.println("item is null");
+            }
+            System.out.println("item : id="+ note.getId() + "; noteName=" + note.getNoteName()+"; text=" + note.getText());
+        }
+        return "notes";
     }
 }
