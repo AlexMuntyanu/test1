@@ -48,12 +48,8 @@ public class MainController {
     }
 
     @RequestMapping(value = "/notes", method = RequestMethod.GET)
-    public ModelAndView getNotes(){
-        ApplicationContext context = new ClassPathXmlApplicationContext("Spring-Notes.xml");
-        NoteDAO noteDAO = (NoteDAO)context.getBean("NoteDAO");
-        //final List<NoteImpl> notes = noteService.getNotes();
-        ModelAndView mav = new ModelAndView("notes");
-        mav.addObject("items", noteDAO.getNotes());
-        return mav;
+    public String getNotes(Model model){
+        model.addAttribute("items", noteService.getNotes());
+        return "notes";
     }
 }
