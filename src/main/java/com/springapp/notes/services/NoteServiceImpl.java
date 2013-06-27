@@ -1,9 +1,9 @@
-package com.springapp.mvc.services;
+package com.springapp.notes.services;
 
 import java.util.List;
 
-import com.springapp.mvc.dao.NoteDAO;
-import com.springapp.mvc.entities.NoteImpl;
+import com.springapp.notes.dao.NoteDAO;
+import com.springapp.notes.entities.NoteImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

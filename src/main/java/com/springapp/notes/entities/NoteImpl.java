@@ -1,4 +1,4 @@
-package com.springapp.mvc.entities;
+package com.springapp.notes.entities;
 
 import java.sql.Date;
 

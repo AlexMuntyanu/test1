@@ -1,4 +1,4 @@
-package com.springapp.mvc.services;
+package com.springapp.notes.services;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -9,7 +9,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.springapp.mvc.entities.NoteImpl;
+import com.springapp.notes.entities.NoteImpl;
 import org.springframework.stereotype.Service;
 
 @Service

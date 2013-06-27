@@ -1,8 +1,8 @@
-package com.springapp.mvc.dao;
+package com.springapp.notes.dao;
 
 import java.util.List;
 
-import com.springapp.mvc.entities.NoteImpl;
+import com.springapp.notes.entities.NoteImpl;
 
 /**
  */

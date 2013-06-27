@@ -1,4 +1,4 @@
-package com.springapp.mvc.services;
+package com.springapp.notes.services;
 
 import java.util.Comparator;
 

@@ -1,4 +1,4 @@
-package com.springapp.mvc.dao.impl;
+package com.springapp.notes.dao.impl;
 
 import javax.sql.DataSource;
 
@@ -9,11 +9,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.springapp.mvc.dao.NoteDAO;
-import com.springapp.mvc.entities.NoteImpl;
+import com.springapp.notes.dao.NoteDAO;
+import com.springapp.notes.entities.NoteImpl;
+import org.springframework.stereotype.Repository;
 
 /**
  */
+@Repository
 public class JdbcNoteDAO implements NoteDAO {
 
     private DataSource dataSource;
