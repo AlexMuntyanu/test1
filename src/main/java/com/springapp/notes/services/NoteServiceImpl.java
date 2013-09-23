@@ -7,10 +7,10 @@ import com.springapp.notes.entities.NoteImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-@Service
+//@Service
 public class NoteServiceImpl {
 
-    @Autowired
+    //@Autowired
     NoteDAO noteDAO;
 
     public List<NoteImpl> getNotes() {

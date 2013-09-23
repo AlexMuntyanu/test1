@@ -15,7 +15,7 @@ import org.springframework.stereotype.Repository;
 
 /**
  */
-@Repository
+//@Repository
 public class JdbcNoteDAO implements NoteDAO {
 
     private DataSource dataSource;

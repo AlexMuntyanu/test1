@@ -12,7 +12,7 @@ import java.util.List;
 import com.springapp.notes.entities.NoteImpl;
 import org.springframework.stereotype.Service;
 
-@Service
+//@Service
 public class DBService {
 
     private List<NoteImpl> listOfNotes = new ArrayList<NoteImpl>();

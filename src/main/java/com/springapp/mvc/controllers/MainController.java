@@ -13,12 +13,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 /**
  */
 @Controller
+@RequestMapping("/secur")
 public class MainController {
 
-    @Autowired
+   // @Autowired
     Comparator<String> comparator;
 
-    @Autowired
+   // @Autowired
     NoteServiceImpl noteService;
 
     @RequestMapping(value = "/")
@@ -45,5 +46,11 @@ public class MainController {
     public String getNotes(Model model){
         model.addAttribute("items", noteService.getNotes());
         return "notes";
+    }
+
+    @RequestMapping(method = RequestMethod.GET)
+    public String getToSecurPage(Model model){
+        model.addAttribute("message", "we get to secur page");
+        return "secur";
     }
 }
