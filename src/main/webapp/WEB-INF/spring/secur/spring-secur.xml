@@ -8,7 +8,7 @@
 	http://www.springframework.org/schema/security/spring-security-3.0.3.xsd">
 
     <http auto-config="true">
-        <intercept-url pattern="/welcome*" access="ROLE_USER"/>
+        <intercept-url pattern="/secur*" access="ROLE_USER"/>
     </http>
 
     <authentication-manager>

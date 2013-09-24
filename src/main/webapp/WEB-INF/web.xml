@@ -2,20 +2,13 @@
 <web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
-          http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+         http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
 
 
     <!-- Processes application requests -->
     <servlet>
         <servlet-name>appServlet</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-        <init-param>
-            <param-name>contextConfigLocation</param-name>
-            <param-value>
-                /WEB-INF/spring/servlet/servlet-context.xml
-                /WEB-INF/spring/security/spring-secur.xml
-            </param-value>
-        </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
 
@@ -28,6 +21,13 @@
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
 
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>
+            /WEB-INF/appServlet-servlet.xml,
+            /WEB-INF/spring/secur/spring-secur.xml
+        </param-value>
+	</context-param>
 
     <!--Spring secur filtering-->
     <filter>
