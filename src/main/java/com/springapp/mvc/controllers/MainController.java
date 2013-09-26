@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 /**
  */
 @Controller
-@RequestMapping("/secur")
 public class MainController {
 
    // @Autowired
@@ -48,9 +47,23 @@ public class MainController {
         return "notes";
     }
 
-    @RequestMapping(method = RequestMethod.GET)
+    @RequestMapping(value = "/secur", method = RequestMethod.GET)
     public String getToSecurPage(Model model){
         model.addAttribute("message", "we get to secur page");
         return "secur";
+    }
+
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public String login(Model model){
+        return "login";
+    }
+    @RequestMapping(value = "/logout", method = RequestMethod.GET)
+    public String logout(Model model){
+        return "login";
+    }
+    @RequestMapping(value = "/loginerror", method = RequestMethod.GET)
+    public String loginerror(Model model){
+        model.addAttribute("error", "true");
+        return "login";
     }
 }
