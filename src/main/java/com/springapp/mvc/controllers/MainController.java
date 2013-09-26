@@ -3,7 +3,11 @@ package com.springapp.mvc.controllers;
 import java.util.Comparator;
 
 import com.springapp.notes.services.NoteServiceImpl;
+import java.security.Principal;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -48,7 +52,13 @@ public class MainController {
     }
 
     @RequestMapping(value = "/secur", method = RequestMethod.GET)
-    public String getToSecurPage(Model model){
+    public String getToSecurPage(Model model, Principal principal){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User user = (User)auth.getPrincipal();
+
+
+        model.addAttribute("username", principal.getName());
+        model.addAttribute("pass", user.getPassword());
         model.addAttribute("message", "we get to secur page");
         return "secur";
     }

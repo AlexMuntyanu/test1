@@ -12,6 +12,10 @@
 
 </head>
     <body>
+        <h1>name : ${username}</h1>
+        <br>
+        <h1>password : ${pass}</h1>
+        <br>
         <h1>Message : ${message}</h1>
         <br>
         <a href="<c:url value="/j_spring_security_logout" />" > Logout</a>

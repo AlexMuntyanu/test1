@@ -16,8 +16,9 @@
 
     <authentication-manager>
         <authentication-provider>
+            <password-encoder hash="md5"/>
             <user-service>
-                <user name="1" password="1" authorities="ROLE_USER"/>
+                <user name="log" password="1a1dc91c907325c69271ddf0c944bc72" authorities="ROLE_USER"/>
             </user-service>
         </authentication-provider>
     </authentication-manager>
