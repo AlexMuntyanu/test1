@@ -24,8 +24,7 @@
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>
-            /WEB-INF/appServlet-servlet.xml,
-            /WEB-INF/spring/secur/spring-secur.xml
+            classpath:applicationContext.xml
         </param-value>
 	</context-param>
 
