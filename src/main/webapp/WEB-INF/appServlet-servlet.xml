@@ -29,4 +29,8 @@
         </property>
     </bean>
 
+    <bean   id="userService"
+            class="com.springapp.notes.services.UserService">
+    </bean>
+
 </beans>

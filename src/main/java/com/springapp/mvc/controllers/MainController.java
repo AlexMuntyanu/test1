@@ -4,6 +4,8 @@ import java.util.Comparator;
 
 import com.springapp.notes.services.NoteServiceImpl;
 import java.security.Principal;
+
+import com.springapp.notes.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -24,6 +26,9 @@ public class MainController {
 
    // @Autowired
     NoteServiceImpl noteService;
+
+    @Autowired
+    UserService userService;
 
 
     @RequestMapping(value = "/secur", method = RequestMethod.GET)
@@ -59,6 +64,11 @@ public class MainController {
     @RequestMapping(value = "/add_user", method = RequestMethod.POST)
     public String addUser(@RequestParam("userName") String userName,
                           @RequestParam("password") String password){
+        try {
+            userService.addUser(userName,password);
+        } catch (Exception e) {
+            System.out.println("ERROR occurred");
+        }
 
         return "add_user";
     }
