@@ -6,6 +6,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="security" %>
+
 <html>
 <head>
     <title>secur page</title>
@@ -18,6 +20,10 @@
         <br>
         <h1>Message : ${message}</h1>
         <br>
+        <security:authorize ifAnyGranted="ROLE_ADMIN">
+            <a href="<c:url value="/add_user" />" > add new user</a>
+            <br>
+        </security:authorize>
         <a href="<c:url value="/j_spring_security_logout" />" > Logout</a>
     </body>
 </html>

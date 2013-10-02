@@ -9,7 +9,7 @@
 
     <properties>
         <spring.version>3.2.0.RELEASE</spring.version>
-        <spring_secur.version>3.0.5.RELEASE</spring_secur.version>
+        <spring_secur.version>3.1.4.RELEASE</spring_secur.version>
     </properties>
 
     <dependencies>
@@ -95,6 +95,12 @@
             <version>${spring_secur.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-taglibs</artifactId>
+            <version>${spring_secur.version}</version>
+        </dependency>
+
 
 
     </dependencies>
@@ -102,16 +108,16 @@
     <build>
         <finalName>123</finalName>
         <plugins>
-            <!--<plugin>
+            <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>tomcat-maven-plugin</artifactId>
-                <version>1.1</version>
                 <configuration>
-                    <url>http://127.0.0.1:8080/manager/text</url>
-                    <server>TomcatServer</server>
-                    <path>/${project.build.finalName}</path>
+                    <server>tomcat-local</server>
+                    <username>admin</username>
+                    <password>password</password>
+
                 </configuration>
-            </plugin>-->
+            </plugin>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
