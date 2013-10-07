@@ -1,10 +1,11 @@
-package com.springapp.mvc.controllers;
+package com.springapp.notes.mvc.controllers;
 
 import java.util.Comparator;
 
-import com.springapp.notes.services.NoteServiceImpl;
+import com.springapp.notes.services.NoteService;
+
 import java.security.Principal;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
@@ -23,7 +24,7 @@ public class MainController {
     Comparator<String> comparator;
 
    // @Autowired
-    NoteServiceImpl noteService;
+    NoteService noteService;
 
 
     @RequestMapping(value = "/secur", method = RequestMethod.GET)
