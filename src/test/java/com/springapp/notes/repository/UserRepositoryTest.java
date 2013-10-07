@@ -1,7 +1,10 @@
 package com.springapp.notes.repository;
 
+import static junit.framework.Assert.assertTrue;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+
+import junit.framework.Assert;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -40,5 +43,14 @@ public class UserRepositoryTest {
     final User found = repo.findOne(USERNAME);
     assertNotNull(found);
     assertEquals(PASS, found.getPassword());
+  }
+
+  /** data dependent */
+  @Test
+  public void testGetRolesForAdmin() throws Exception {
+    final User found = repo.findOne("admin");
+    assertNotNull(found);
+    assertTrue(found.getAuthorities().size() > 0);
+    Assert.assertEquals("ROLE_ADMIN", found.getAuthorities().get(0).getAuthority());
   }
 }

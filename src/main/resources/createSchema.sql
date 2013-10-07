@@ -6,6 +6,7 @@ create table users(
   enabled boolean not null);
 
 create table authorities (
+  id number not null primary key,
   username VARCHAR(50) not null,
   authority VARCHAR(50) not null,
   constraint fk_authorities_users foreign key(username) references users(username));
