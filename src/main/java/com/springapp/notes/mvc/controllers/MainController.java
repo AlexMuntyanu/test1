@@ -1,15 +1,16 @@
-package com.springapp.mvc.controllers;
+package com.springapp.notes.mvc.controllers;
 
+import java.util.Arrays;
 import java.util.Comparator;
 
-import com.springapp.notes.services.NoteServiceImpl;
 import java.security.Principal;
 
-import com.springapp.notes.services.UserService;
+import com.springapp.notes.entities.Authority;
+import com.springapp.notes.entities.User;
+import com.springapp.notes.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,10 +26,11 @@ public class MainController {
     Comparator<String> comparator;
 
    // @Autowired
-    NoteServiceImpl noteService;
-
+    //NoteServiceImpl noteService;
     @Autowired
-    UserService userService;
+    UserRepository userRepository;
+
+
 
 
     @RequestMapping(value = "/secur", method = RequestMethod.GET)
@@ -64,11 +66,13 @@ public class MainController {
     @RequestMapping(value = "/add_user", method = RequestMethod.POST)
     public String addUser(@RequestParam("userName") String userName,
                           @RequestParam("password") String password){
-        try {
-            userService.addUser(userName,password);
-        } catch (Exception e) {
-            System.out.println("ERROR occurred");
-        }
+        Authority authority = new Authority();
+        authority.setAuthority("ROLE_USER");
+        User user = new User();
+        user.setPassword(password);
+        user.setUserName(userName);
+        user.setAuthorities(Arrays.asList(authority));
+        userRepository.save(user);
 
         return "add_user";
     }

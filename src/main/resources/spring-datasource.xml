@@ -1,11 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans:beans
+<beans:beans xmlns="http://www.springframework.org/schema/beans"
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              xmlns:beans="http://www.springframework.org/schema/beans"
              xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+             xmlns:p="http://www.springframework.org/schema/p"
              xsi:schemaLocation="http://www.springframework.org/schema/beans
                   http://www.springframework.org/schema/beans/spring-beans.xsd
                   http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd">
+
+    <bean id="jpaTransactionManager" class="org.springframework.orm.jpa.JpaTransactionManager"/>
+    <bean id="vendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter "
+          p:showSql="false"
+          p:databasePlatform="org.hibernate.dialect.H2Dialect"
+          p:generateDdl="false"/>
+    <bean id="entytyManager" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
+          p:packagesToScan="com.springapp.notes.entities"
+          p:dataSource-ref="dataSource"
+          p:jpaVendorAdapter-ref="vendorAdapter"/>
 
     <jdbc:embedded-database id="dataSource" type="H2">
         <jdbc:script location="classpath:createSchema.sql"/>
