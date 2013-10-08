@@ -1,18 +1,28 @@
 package com.springapp.notes.entities;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 import java.sql.Date;
 
-/**
- */
-//@Entity
-public class NoteImpl {
-    private int id;
+@Entity
+@Table(name = "NOTES")
+public class Note {
+
+    @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
+    @Column(name = "id")
+    private long id;
     private String noteName;
     private String text;
     private Date dateOfCreation;
     private Date dateOfModification;
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
@@ -32,7 +42,7 @@ public class NoteImpl {
         return noteName;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
