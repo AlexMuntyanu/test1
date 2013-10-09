@@ -3,7 +3,6 @@ package com.springapp.notes.entities;
 
 
 
-import com.sun.istack.internal.NotNull;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -16,9 +15,9 @@ import java.util.List;
 @Table(name = "users")
 public class User {
     @Id
-    @NotNull
     String userName;
     String password;
+    boolean enabled;
     @OneToMany (mappedBy = "user")
     List<Authority> authorities = new ArrayList<Authority>();
 
@@ -34,6 +33,10 @@ public class User {
         return authorities;
     }
 
+    public boolean isEnabled() {
+        return enabled;
+    }
+
     public void setUserName(String userName) {
         this.userName = userName;
     }
@@ -44,5 +47,9 @@ public class User {
 
     public void setAuthorities(List<Authority> authorities) {
         this.authorities = authorities;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 }

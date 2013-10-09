@@ -9,8 +9,6 @@ import com.springapp.notes.entities.Authority;
 import com.springapp.notes.entities.User;
 import com.springapp.notes.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,12 +33,7 @@ public class MainController {
 
     @RequestMapping(value = "/secur", method = RequestMethod.GET)
     public String getToSecurPage(Model model, Principal principal){
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        User user = (User)auth.getPrincipal();
-
-
         model.addAttribute("username", principal.getName());
-        model.addAttribute("pass", user.getPassword());
         model.addAttribute("message", "we get to secur page");
         return "secur";
     }
@@ -67,11 +60,15 @@ public class MainController {
     public String addUser(@RequestParam("userName") String userName,
                           @RequestParam("password") String password){
         Authority authority = new Authority();
+
         authority.setAuthority("ROLE_USER");
+
         User user = new User();
+        authority.setUser(user);
         user.setPassword(password);
         user.setUserName(userName);
         user.setAuthorities(Arrays.asList(authority));
+        user.setEnabled(true);
         userRepository.save(user);
 
         return "add_user";
