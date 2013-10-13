@@ -7,6 +7,7 @@ import java.security.Principal;
 
 import com.springapp.notes.entities.Authority;
 import com.springapp.notes.entities.User;
+import com.springapp.notes.repository.Authorities;
 import com.springapp.notes.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,6 +28,8 @@ public class MainController {
     //NoteServiceImpl noteService;
     @Autowired
     UserRepository userRepository;
+    @Autowired
+    Authorities authorities;
 
 
 
@@ -65,10 +68,13 @@ public class MainController {
 
         User user = new User();
         authority.setUser(user);
-        user.setPassword(password);
+        authority.setId(33);
+        user.setPassword("1a1dc91c907325c69271ddf0c944bc72");
+
         user.setUserName(userName);
         user.setAuthorities(Arrays.asList(authority));
         user.setEnabled(true);
+        authorities.save(authority);
         userRepository.save(user);
 
         return "add_user";
