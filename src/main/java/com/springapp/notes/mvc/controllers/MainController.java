@@ -62,19 +62,14 @@ public class MainController {
     @RequestMapping(value = "/add_user", method = RequestMethod.POST)
     public String addUser(@RequestParam("userName") String userName,
                           @RequestParam("password") String password){
-        Authority authority = new Authority();
-
-        authority.setAuthority("ROLE_USER");
 
         User user = new User();
-        authority.setUser(user);
-        authority.setId(33);
+        user.getAuthorities().add(new Authority("ROLE_USER",user));
+        user.getAuthorities().add(new Authority("ROLE_ADMIN",user));
         user.setPassword("1a1dc91c907325c69271ddf0c944bc72");
-
         user.setUserName(userName);
-        user.setAuthorities(Arrays.asList(authority));
         user.setEnabled(true);
-        authorities.save(authority);
+        //authorities.save(authority);
         userRepository.save(user);
 
         return "add_user";
