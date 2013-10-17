@@ -1,15 +1,14 @@
 package com.springapp.notes.mvc.controllers;
 
-import java.util.Arrays;
 import java.util.Comparator;
 
 import java.security.Principal;
 
 import com.springapp.notes.entities.Authority;
 import com.springapp.notes.entities.User;
-import com.springapp.notes.repository.Authorities;
 import com.springapp.notes.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,8 +27,7 @@ public class MainController {
     //NoteServiceImpl noteService;
     @Autowired
     UserRepository userRepository;
-    @Autowired
-    Authorities authorities;
+
 
 
 
@@ -63,15 +61,15 @@ public class MainController {
     public String addUser(@RequestParam("userName") String userName,
                           @RequestParam("password") String password){
 
+        Md5PasswordEncoder encoder =  new Md5PasswordEncoder();
+        String hashedPass = encoder.encodePassword(password,false);
         User user = new User();
-        user.getAuthorities().add(new Authority("ROLE_USER",user));
-        user.getAuthorities().add(new Authority("ROLE_ADMIN",user));
-        user.setPassword("1a1dc91c907325c69271ddf0c944bc72");
         user.setUserName(userName);
+        user.setPassword(hashedPass);
         user.setEnabled(true);
-        //authorities.save(authority);
+        user.getAuthorities().add(new Authority("ROLE_ADMIN",user));
         userRepository.save(user);
 
-        return "add_user";
+        return "secur";
     }
 }

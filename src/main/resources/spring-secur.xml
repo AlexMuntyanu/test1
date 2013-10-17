@@ -9,6 +9,7 @@
 
     <http auto-config="true">
         <intercept-url pattern="/secur*" access="ROLE_USER,ROLE_ADMIN"/>
+        <intercept-url pattern="/add_user*" access="ROLE_ADMIN"/>
         <form-login login-page="/login" default-target-url="/secur"
                     authentication-failure-url="/loginerror"/>
         <logout logout-success-url="/logout"/>

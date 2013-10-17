@@ -4,6 +4,7 @@ package com.springapp.notes.entities;
 
 
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -15,14 +16,14 @@ import java.util.List;
 @Table(name = "users")
 public class User {
     @Id
-    String userName;
+    String username;
     String password;
     boolean enabled;
-    @OneToMany (mappedBy = "user")
+    @OneToMany (mappedBy = "user", cascade=CascadeType.ALL)
     List<Authority> authorities = new ArrayList<Authority>();
 
     public String getUserName() {
-        return userName;
+        return username;
     }
 
     public String getPassword() {
@@ -38,7 +39,7 @@ public class User {
     }
 
     public void setUserName(String userName) {
-        this.userName = userName;
+        this.username = userName;
     }
 
     public void setPassword(String password) {
