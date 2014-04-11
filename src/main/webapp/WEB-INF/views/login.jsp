@@ -11,6 +11,14 @@
             margin: 16px;
         }
     </style>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+
+
+
 </head>
 <body onload='document.f.j_username.focus();'>
 <h3>Custom Login Page</h3>
@@ -24,27 +32,34 @@
 
 <form name='f' action="<c:url value='j_spring_security_check' />" method='POST'>
 
-    <table>
-        <tr>
-            <td>Username:</td>
-            <td><input type='text' name='j_username' value=''>
-            </td>
-        </tr>
-        <tr>
-            <td>Password:</td>
-            <td><input type='password' name='j_password' />
-            </td>
-        </tr>
-        <tr>
-            <td colspan='2'><input name="submit" type="submit" value="submit"/>
-            </td>
-        </tr>
-        <tr>
-            <td colspan='2'><input name="reset" type="reset" />
-            </td>
-        </tr>
-    </table>
 
+
+    <div class="row">
+        <div class ="col-xs-4 col-md-offset-2" style="box-shadow:inset 1px -1px 1px #444, inset -1px 1px 1px #444;">
+            <p>
+            <table class="table span2 center-table">
+                <caption>Please login</caption>
+                <tr>
+                    <td>Username:</td>
+                    <td><input type='text' name='j_username' value=''>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Password:</td>
+                    <td><input type='password' name='j_password' />
+                    </td>
+                </tr>
+                <tr>
+                    <td ><button name="submit" class="btn btn-success" type="submit" name="submit" >Login</button></td>
+                    <td ><button name="reset" class="btn btn-danger" type="reset">Reset</button></td>
+                </tr>
+
+            </table>
+            </p>
+        </div>
+    </div>
 </form>
+<!-- Latest compiled and minified JavaScript -->
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 </body>
 </html>
