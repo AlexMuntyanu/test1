@@ -11,19 +11,41 @@
 <html>
 <head>
     <title>secur page</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
 
 </head>
     <body>
-        <h1>name : ${username}</h1>
-        <br>
-        <h1>password : ${pass}</h1>
-        <br>
-        <h1>Message : ${message}</h1>
-        <br>
-        <security:authorize ifAnyGranted="ROLE_ADMIN">
-            <a href="<c:url value="/add_user" />" > add new user</a>
-            <br>
-        </security:authorize>
-        <a href="<c:url value="/j_spring_security_logout" />" > Logout</a>
+    <br>
+    <div class="col-sm-4">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">User information</h3>
+            </div>
+            <div class="panel-body">
+                <tbody>
+                    <tr>
+                        <td >name : </td> <td>${username}</td>
+                    </tr>
+                    <tr>
+                        <td >password : </td> <td>${pass}</td>
+                    </tr>
+                    <tr>
+                        <td >Message : </td> <td>${message}</td>
+                    </tr>
+                    <tr>
+                        <td >
+                            <security:authorize ifAnyGranted="ROLE_ADMIN">
+                            <a href="<c:url value="/add_user" />" > add new user</a>
+                        </td>
+                        <td></security:authorize>
+                            <a href="<c:url value="/j_spring_security_logout" />" > Logout</a>
+                        </td>
+                    </tr>
+                  </tbody>
+
+             </div>
+            </div>
+        </div>
     </body>
 </html>

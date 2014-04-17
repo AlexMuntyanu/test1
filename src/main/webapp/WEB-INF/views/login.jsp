@@ -11,10 +11,7 @@
             margin: 16px;
         }
     </style>
-    <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-
-    <!-- Optional theme -->
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
 
 
@@ -41,17 +38,17 @@
                 <caption>Please login</caption>
                 <tr>
                     <td>Username:</td>
-                    <td><input type='text' name='j_username' value=''>
+                    <td><input class="form-control" type='text' name='j_username' value=''>
                     </td>
                 </tr>
                 <tr>
                     <td>Password:</td>
-                    <td><input type='password' name='j_password' />
+                    <td><input class="form-control" type='password' name='j_password' />
                     </td>
                 </tr>
                 <tr>
                     <td ><button name="submit" class="btn btn-success" type="submit" name="submit" >Login</button></td>
-                    <td ><button name="reset" class="btn btn-danger" type="reset">Reset</button></td>
+                    <td ><button name="reset" class="btn btn-danger pull-right" type="reset">Reset</button></td>
                 </tr>
 
             </table>
